@@ -1216,10 +1216,10 @@
     "@eslint/core" "^0.15.2"
     levn "^0.4.1"
 
-"@expo-google-fonts/space-grotesk@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/space-grotesk/-/space-grotesk-0.4.0.tgz#0d9340f0c7c5d3a12e36ba324e6f5bd22c22f6e7"
-  integrity sha512-AwxzX8sbcy9QiYkJwc3pKgpMkHB/himJfcZNEl/a/KvGIra9CewPmBs/zwMYcWt8SsNMslqfeLy5NFeJtf8Ixg==
+"@expo-google-fonts/alexandria@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/alexandria/-/alexandria-0.4.1.tgz#3dfeabb25d0112d0f02984460bc537791314f3f7"
+  integrity sha512-DzPlM6/b/v+EbiFIol7kU34j1532gMoPhecYWOxh38OZWUXmmcaslWRJWoJ5RmQMPr+NllXquSOFb+1fqTftkg==
 
 "@expo/cli@0.24.21":
   version "0.24.21"

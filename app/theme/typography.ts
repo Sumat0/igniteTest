@@ -3,29 +3,29 @@
 
 import { Platform } from "react-native"
 import {
-  SpaceGrotesk_300Light as spaceGroteskLight,
-  SpaceGrotesk_400Regular as spaceGroteskRegular,
-  SpaceGrotesk_500Medium as spaceGroteskMedium,
-  SpaceGrotesk_600SemiBold as spaceGroteskSemiBold,
-  SpaceGrotesk_700Bold as spaceGroteskBold,
-} from "@expo-google-fonts/space-grotesk"
+  Alexandria_300Light as alexandriaLight,
+  Alexandria_400Regular as alexandriaRegular,
+  Alexandria_500Medium as alexandriaMedium,
+  Alexandria_600SemiBold as alexandriaSemiBold,
+  Alexandria_700Bold as alexandriaBold,
+} from "@expo-google-fonts/alexandria"
 
 export const customFontsToLoad = {
-  spaceGroteskLight,
-  spaceGroteskRegular,
-  spaceGroteskMedium,
-  spaceGroteskSemiBold,
-  spaceGroteskBold,
+  alexandriaLight,
+  alexandriaRegular,
+  alexandriaMedium,
+  alexandriaSemiBold,
+  alexandriaBold,
 }
 
 const fonts = {
-  spaceGrotesk: {
+  alexandria: {
     // Cross-platform Google font.
-    light: "spaceGroteskLight",
-    normal: "spaceGroteskRegular",
-    medium: "spaceGroteskMedium",
-    semiBold: "spaceGroteskSemiBold",
-    bold: "spaceGroteskBold",
+    light: "alexandriaLight",
+    normal: "alexandriaRegular",
+    medium: "alexandriaMedium",
+    semiBold: "alexandriaSemiBold",
+    bold: "alexandriaBold",
   },
   helveticaNeue: {
     // iOS only font.
@@ -59,7 +59,7 @@ export const typography = {
   /**
    * The primary font. Used in most places.
    */
-  primary: fonts.spaceGrotesk,
+  primary: fonts.alexandria,
   /**
    * An alternate font used for perhaps titles and stuff.
    */

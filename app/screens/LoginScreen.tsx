@@ -1,9 +1,9 @@
 import { ComponentType, FC, useEffect, useMemo, useRef, useState } from "react"
 // eslint-disable-next-line no-restricted-imports
-import { TextInput, TextStyle, ViewStyle } from "react-native"
+import { Image, ImageStyle, TextInput, TextStyle, ViewStyle } from "react-native"
 
 import { Button } from "@/components/Button"
-import { PressableIcon } from "@/components/Icon"
+import { PressableIcon, Icon } from "@/components/Icon"
 import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
 import { TextField, type TextFieldAccessoryProps } from "@/components/TextField"
@@ -11,9 +11,10 @@ import { useAuth } from "@/context/AuthContext"
 import type { AppStackScreenProps } from "@/navigators/AppNavigator"
 import { useAppTheme } from "@/theme/context"
 import type { ThemedStyle } from "@/theme/types"
-
+import { AutoImage } from "@/components/AutoImage"
 interface LoginScreenProps extends AppStackScreenProps<"Login"> {}
 
+const logoText = require("@assets/images/logo_text.png")
 export const LoginScreen: FC<LoginScreenProps> = () => {
   const authPasswordInput = useRef<TextInput>(null)
 
@@ -68,15 +69,33 @@ export const LoginScreen: FC<LoginScreenProps> = () => {
       },
     [isAuthPasswordHidden, colors.palette.neutral800],
   )
-
+  const PasswordLeftAccessory: ComponentType<TextFieldAccessoryProps> = (props: TextFieldAccessoryProps) => (
+    <Icon 
+    icon={"lock2"}             
+    containerStyle={props.style}
+            size={20}/>
+  )
+  const EmailLeftAccessory: ComponentType<TextFieldAccessoryProps> = (props: TextFieldAccessoryProps) => (
+    <Icon
+      icon={"mail"}
+      containerStyle={props.style}
+      size={20}
+    />
+  )
   return (
     <Screen
       preset="auto"
       contentContainerStyle={themed($screenContentContainer)}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" tx="loginScreen:logIn" preset="heading" style={themed($logIn)} />
-      <Text tx="loginScreen:enterDetails" preset="subheading" style={themed($enterDetails)} />
+      <AutoImage
+        source={require("@assets/images/logo_T.png")}
+        style={themed($logo)}
+        resizeMode="contain"
+      />
+      <Image style={themed($LogoText)} source={logoText} resizeMode="contain" />
+      {/*<Text testID="login-heading" tx="loginScreen:logIn" preset="heading" style={themed($logIn)} />
+      <Text tx="loginScreen:enterDetails" preset="subheading" style={themed($enterDetails)} />*/}
       {attemptsCount > 2 && (
         <Text tx="loginScreen:hint" size="sm" weight="light" style={themed($hint)} />
       )}
@@ -89,11 +108,11 @@ export const LoginScreen: FC<LoginScreenProps> = () => {
         autoComplete="email"
         autoCorrect={false}
         keyboardType="email-address"
-        labelTx="loginScreen:emailFieldLabel"
         placeholderTx="loginScreen:emailFieldPlaceholder"
         helper={error}
         status={error ? "error" : undefined}
         onSubmitEditing={() => authPasswordInput.current?.focus()}
+        LeftAccessory={EmailLeftAccessory}
       />
 
       <TextField
@@ -105,10 +124,10 @@ export const LoginScreen: FC<LoginScreenProps> = () => {
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="loginScreen:passwordFieldLabel"
         placeholderTx="loginScreen:passwordFieldPlaceholder"
         onSubmitEditing={login}
         RightAccessory={PasswordRightAccessory}
+        LeftAccessory={PasswordLeftAccessory}
       />
 
       <Button
@@ -146,4 +165,16 @@ const $textField: ThemedStyle<ViewStyle> = ({ spacing }) => ({
 
 const $tapButton: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   marginTop: spacing.xs,
+})
+
+const $logo: ThemedStyle<ImageStyle> = ({ spacing }) => ({
+  height: 306,
+  width: "100%",
+  marginBottom: -100,
+})
+
+const $LogoText: ThemedStyle<ImageStyle> = ({ spacing }) => ({
+  height: 237,
+  width: "100%",
+  marginBottom: spacing.xxxs,
 })

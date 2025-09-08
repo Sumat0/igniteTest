@@ -10,6 +10,7 @@ import { DemoCommunityScreen } from "@/screens/DemoCommunityScreen"
 import { DemoDebugScreen } from "@/screens/DemoDebugScreen"
 import { DemoPodcastListScreen } from "@/screens/DemoPodcastListScreen"
 import { DemoShowroomScreen } from "@/screens/DemoShowroomScreen/DemoShowroomScreen"
+import { HomeScreen } from "@/screens/HomeScreen"
 import { useAppTheme } from "@/theme/context"
 import type { ThemedStyle } from "@/theme/types"
 
@@ -90,7 +91,20 @@ export function DemoNavigator() {
             ),
           }}
         />
-
+        <Tab.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            tabBarLabel: translate("demoNavigator:communityTab"),
+            tabBarIcon: ({ focused }) => (
+              <Icon
+                icon="community"
+                color={focused ? colors.tint : colors.tintInactive}
+                size={30}
+              />
+            ),
+          }}
+        />
         <Tab.Screen
           name="DemoPodcastList"
           component={DemoPodcastListScreen}
